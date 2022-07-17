@@ -6,5 +6,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 set(CONAN_DISABLE_CHECK_COMPILER True)
 conan_basic_setup()
 
-add_subdirectory(filter_ip)
+enable_testing()
+
+add_subdirectory(ip_filter)
 
