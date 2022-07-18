@@ -2,9 +2,6 @@ name: CMake
 
 on:
   push:
-    branches:
-      - master
-      - feature/github_actions
   pull_request:
     branches: [ "master" ]
 
