@@ -25,7 +25,7 @@ jobs:
       - run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 #      - run: cmake --build . --target test
       - run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
-      - run: cmake --build . --target package
+      - run: cmake --build ${{github.workspace}}/build --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
