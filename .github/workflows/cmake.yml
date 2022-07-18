@@ -24,6 +24,7 @@ jobs:
       - run: python ip_filter/integration/hash_test.py
       - run: cmake --build ${{github.workspace}}/build --target package
       - name: Create Release
+        if: github.ref == 'refs/heads/master'
         id: create_release
         uses: actions/create-release@v1
         env:
