@@ -21,8 +21,8 @@ jobs:
       - run: conan profile update settings.compiler.libcxx=libstdc++11 default
       - run: conan install --build missing -if ${{github.workspace}}/build .
 #      - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-      - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
-      - run: cmake --build .
+      - run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 #      - run: cmake --build . --target test
       - run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
       - run: cmake --build . --target package
