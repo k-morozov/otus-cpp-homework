@@ -2,8 +2,7 @@ name: CMake
 
 on:
   pull_request:
-    branches:
-      - 'feature/ip_filter'
+    branches: [ "feature/ip_filter" ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
