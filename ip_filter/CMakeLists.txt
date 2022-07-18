@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.22)
 
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VERSION 0.0.${PATCH_VERSION})
+
 set(APP_NAME ip_filter)
-project(${APP_NAME} VERSION 0.0.1)
+project(${APP_NAME} VERSION ${PROJECT_VERSION})
+
+configure_file(src/version.h.in src/version.h)
 
 set(CMAKE_CXX_STANDARD 20)
 
