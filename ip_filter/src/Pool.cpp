@@ -106,9 +106,6 @@ Pool Pool::filter_any(uint8_t octet) const {
 }
 
 bool Pool::SortPredicate::operator()(const ip_address_t& lhs, const ip_address_t& rhs) {
-	// @TODO update
-	assert(lhs.size() != rhs.size() != IP_ADDRESS_SIZE);
-
 	for(size_t i=0; i<IP_ADDRESS_SIZE; ++i) {
 		if (lhs[i] < rhs[i]) {
 			return false;

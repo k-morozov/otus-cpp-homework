@@ -10,3 +10,5 @@ enable_testing()
 
 add_subdirectory(ip_filter)
 
+add_subdirectory(print_ip)
+

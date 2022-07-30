@@ -17,7 +17,6 @@ public:
 
 protected:
 	void SetUp() override {
-		std::cout << std::filesystem::current_path() << std::endl;
 		static constexpr auto filename = "static/ip_filter.tsv";
 		std::ifstream stream;
 		stream.open(filename, std::ios::in);

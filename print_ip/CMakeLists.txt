@@ -3,16 +3,17 @@ cmake_minimum_required(VERSION 3.22)
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
-set(APP_NAME ip_filter)
+set(APP_NAME print_ip)
 project(${APP_NAME} VERSION ${PROJECT_VERSION})
 
 configure_file(src/version.h.in src/version.h)
+
+include_directories(include)
 
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${APP_NAME}
         src/main.cpp
-        src/Pool.cpp
 )
 
 add_subdirectory(test)
