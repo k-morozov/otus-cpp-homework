@@ -5,12 +5,17 @@
 #pragma once
 
 #include <cassert>
+#include <concepts>
 #include <type_traits>
 #include <utility>
 
+
 namespace detail {
 
-template<typename T, auto& Stream, typename U = void>
+template<typename T>
+concept Integral = std::is_integral_v<T>;;
+
+template<typename T, auto& Stream>
 struct ip {
 	static constexpr void print(T&&) {
 		Stream << "Base type" << std::endl;
@@ -18,7 +23,9 @@ struct ip {
 };
 
 template<typename T, auto& Stream>
-struct ip<T, Stream, std::enable_if_t<std::is_integral_v<T>, void>> {
+requires Integral<T>
+struct ip<T, Stream> {
+	static_assert(std::is_integral_v<T>);
 	static constexpr void print(T&& value) {
 		unpack(std::forward<T>(value),
 		        std::make_index_sequence<sizeof(T)>());
