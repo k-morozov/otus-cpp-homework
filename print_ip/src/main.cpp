@@ -25,4 +25,7 @@ int main() {
 	print_ip( std::list<short>{400, 300, 200, 100} ); // 400.300.200.100
 
 	print_ip( std::make_tuple(123, 456, 789, 0) ); // 123.456.789.0
+
+	print_ip( std::make_tuple(123, 456, 789, 0) ); // 123.456.789.0
+//	print_ip( std::make_tuple(123, 456.1, 789, 0) ); // compile failed
 }

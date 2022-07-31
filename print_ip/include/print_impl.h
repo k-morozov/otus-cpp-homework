@@ -22,6 +22,9 @@ template<typename T>
 concept Integral = std::is_integral_v<T>;;
 
 template<typename T>
+concept String = std::is_same_v<T, std::string>;
+
+template<typename T>
 concept VectorOrList = std::is_same_v<T, std::vector<typename T::value_type>> ||
 					   std::is_same_v<T, std::list<typename T::value_type>>;
 
@@ -30,6 +33,14 @@ concept Tuple = is_tuple<T>::value;
 
 template<typename T, auto& Stream>
 struct ip {
+	static constexpr void print(T&& value) {
+		static_assert(true, "This function doesn't be called!");
+	}
+};
+
+template<typename T, auto& Stream>
+requires String<T>
+struct ip<T, Stream> {
 	static constexpr void print(T&& value) {
 		Stream << value << std::endl;
 	}
@@ -63,8 +74,6 @@ private:
 template<typename T, auto& Stream>
 requires VectorOrList<T>
 struct ip<T, Stream> {
-	using value_type = typename T::value_type;
-
 	static constexpr void print(T&& container) {
 		for(auto it = container.begin(); it != container.end(); it++) {
 			Stream << (it!=container.begin() ? "." : "") << *it;
