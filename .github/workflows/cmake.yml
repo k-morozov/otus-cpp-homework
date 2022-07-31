@@ -69,7 +69,7 @@ jobs:
       - run: ${{github.workspace}}/build/bin/test_print_ip
       - run: cmake --build ${{github.workspace}}/build --target package print_ip
       - name: Create Release
-        if: github.ref == 'refs/heads/master'
+#        if: github.ref == 'refs/heads/master'
         id: create_release
         uses: actions/create-release@v1
         env:
