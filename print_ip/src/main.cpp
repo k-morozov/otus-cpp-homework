@@ -2,6 +2,8 @@
 // Created by focus on 30.07.22.
 //
 #include <iostream>
+#include <list>
+#include <tuple>
 #include <vector>
 
 #include <print_ip.h>
@@ -21,4 +23,6 @@ int main() {
 	print_ip( std::vector<int>{100, 200, 300, 400} ); // 100.200.300.400
 
 	print_ip( std::list<short>{400, 300, 200, 100} ); // 400.300.200.100
+
+	print_ip( std::make_tuple(123, 456, 789, 0) ); // 123.456.789.0
 }

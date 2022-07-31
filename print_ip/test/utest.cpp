@@ -66,3 +66,12 @@ TEST_F(Basic, vector_value) {
 	const std::string expected = "100.200.300.400\n";
 	ASSERT_EQ(result, expected);
 }
+
+TEST_F(Basic, tuple_value) {
+	static std::stringstream stream;
+
+	print_ip<std::tuple<int, int, int, int>, stream>(std::make_tuple(123, 456, 789, 0));
+	const auto result = stream.str();
+	const std::string expected = "123.456.789.0\n";
+	ASSERT_EQ(result, expected);
+}
